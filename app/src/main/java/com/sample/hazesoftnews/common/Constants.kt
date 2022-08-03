@@ -6,6 +6,6 @@ object Constants {
 
     const val API_KEY = "d0012430561a42b4bde9972b484f3fc2"
 
-    const val PARAM_query = "query"
+    const val PARAM_QUERY = "query"
 
 }

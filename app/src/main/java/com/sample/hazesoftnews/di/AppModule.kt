@@ -28,7 +28,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCoinRepository(api:NewsApi):NewsRepository{
+    fun provideNewsRepository(api:NewsApi):NewsRepository{
         return NewsRepositoryImpl(api)
     }
 

@@ -10,6 +10,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sample.hazesoftnews.presentation.news_list.NewsListScreen
 import com.sample.hazesoftnews.presentation.ui.theme.HazesoftNewsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,22 +29,37 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.NewsListScreen.route
+                    ){
+                        composable(
+                            route = Screen.NewsListScreen.route
+                        ){
+                            NewsListScreen(navController = navController)
+                        }
+                      /*  composable(
+                            route = Screen.NewsDetailScreen.route +"/{coinId}"
+                        ){
+                           // NewsDetailScreen()
+                        }*/
+
+                    }
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     HazesoftNewsTheme {
-        Greeting("Android")
+
     }
 }
