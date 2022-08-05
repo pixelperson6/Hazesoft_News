@@ -13,6 +13,6 @@ interface NewsApi {
     suspend fun getNews(@Query("country") country:String = "us",@Query("apiKey") apiKey:String= API_KEY):ArticlesDto
 
     @GET("/v2/everything")
-    suspend fun getNewsByQuery(@Query("q") query:String,@Query("apiKey") apiKey:String= API_KEY) : ArticlesDto
+    suspend fun getNewsByQuery(@Query("q") query:String, @Query("sortBy") sortBy:String = "popularity", @Query("apiKey") apiKey:String= API_KEY) : ArticlesDto
 
 }
