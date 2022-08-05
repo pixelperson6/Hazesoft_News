@@ -23,6 +23,7 @@ import com.sample.hazesoftnews.presentation.news_details.NewsDetailScreen
 import com.sample.hazesoftnews.presentation.news_list.NewsListScreen
 import com.sample.hazesoftnews.presentation.saved_title.TitlesScreen
 import com.sample.hazesoftnews.presentation.ui.theme.HazesoftNewsTheme
+import com.sample.hazesoftnews.presentation.util.SearchBarState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,86 +44,50 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val navController = rememberNavController()
-                    val state = rememberScaffoldState()
-                    val coroutineScope = rememberCoroutineScope()
-
-                    var currentScreen by remember {
-                        mutableStateOf("Home")
-                    }
 
                     Surface {
-                        Scaffold(
-                            scaffoldState = state,
-                            topBar = {
-                                TopAppBar(
-                                    title = { Text(text = "SoftHaze News") },
-                                    navigationIcon = {
-                                        IconButton(onClick = {
-                                            coroutineScope.launch { state.drawerState.open() }
-                                        }) {
-                                            Icon(Icons.Default.Menu, contentDescription = null)
-                                        }
-                                    }
-                                )
-                            },
-                            drawerShape = RoundedCornerShape(topEnd = 24.dp, bottomEnd = 24.dp),
-                            drawerContent = {
-                                AppDrawer(
-                                    currentScreen = currentScreen,
-                                    navigateToHome = {
-                                        currentScreen = "Home"
-                                        navController.navigate(Screen.NewsListScreen.route) },
-                                    navigateToSaved = {
-                                        currentScreen = "Saved"
-                                        navController.navigate(Screen.SavedTitleScreen.route)
-                                                      },
-                                    closeDrawer = { coroutineScope.launch { state.drawerState.close() } }
-                                )
-                            },
-                            content = {
-
-                                NavHost(
-                                    navController = navController,
-                                    startDestination = Screen.NewsListScreen.route
-                                ) {
-                                    composable(
-                                        route = Screen.NewsListScreen.route
-                                    ) {
-                                        NewsListScreen(navController = navController)
-                                    }
-                                    composable(
-                                        route = Screen.NewsDetailScreen.route +
-                                                "?$PARAM_INDEX={index}"
-                                        ,
-                                        arguments = listOf(
-                                            navArgument(
-                                                name = PARAM_INDEX
-                                            ) {
-                                                type = NavType.IntType
-                                                defaultValue = 0
-                                            }
-                                        )
-                                    ) {
-
-                                        NewsDetailScreen(
-                                            navController = navController
-                                        )
 
 
-                                    }
-                                    composable(
-                                        route = Screen.SavedTitleScreen.route
-                                    ) {
-                                        TitlesScreen(navController = navController)
-                                    }
-
-                                }
+                        NavHost(
+                            navController = navController,
+                            startDestination = Screen.NewsListScreen.route
+                        ) {
+                            composable(
+                                route = Screen.NewsListScreen.route
+                            ) {
+                                NewsListScreen(navController = navController)
                             }
-                        )
+                            composable(
+                                route = Screen.NewsDetailScreen.route +
+                                        "?$PARAM_INDEX={index}",
+                                arguments = listOf(
+                                    navArgument(
+                                        name = PARAM_INDEX
+                                    ) {
+                                        type = NavType.IntType
+                                        defaultValue = 0
+                                    }
+                                )
+                            ) {
+
+                                NewsDetailScreen(
+                                    navController = navController
+                                )
+
+
+                            }
+                            composable(
+                                route = Screen.SavedTitleScreen.route
+                            ) {
+                                TitlesScreen(navController = navController)
+                            }
+
+                        }
                     }
 
-
                 }
+
+
             }
         }
     }

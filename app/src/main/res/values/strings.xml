@@ -3,4 +3,8 @@
     <string name="home_title">Home</string>
     <string name="saved_title">Saved</string>
     <string name="toast_no_browser">No Browser Found</string>
+    <string name="search_news">Search News</string>
+    <string name="search">search</string>
+    <string name="search_icon">search icon</string>
+    <string name="close_icon">close icon</string>
 </resources>
