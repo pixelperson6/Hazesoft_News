@@ -21,7 +21,7 @@ import com.sample.hazesoftnews.data.remote.dto.Article
 
 
 @Composable
-fun ArticleDetailsItem(article: Article, onReadAllClick: (articleUrl: String) -> Unit) {
+fun ArticleDetailsItem(article: Article, onReadAllClick: (articleUrl: String) -> Unit,onSavedClick:(title:String) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -50,6 +50,9 @@ fun ArticleDetailsItem(article: Article, onReadAllClick: (articleUrl: String) ->
         ArticleDescription(article.description)
         ArticleContent(article.content)
         ReadAllButton { onReadAllClick.invoke(article.url) }
+        ReadAllButton { onSavedClick(article.title) }
+
+
     }
 }
 

@@ -1,6 +1,5 @@
 package com.sample.hazesoftnews.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,30 +9,27 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sample.hazesoftnews.R
-import com.sample.hazesoftnews.common.components.JetnewsIcon
 import com.sample.hazesoftnews.common.components.NavigationIcon
 
 @Composable
 fun AppDrawer(
-    currentRoute: String,
+    currentScreen: String,
     navigateToHome: () -> Unit,
     navigateToSaved: () -> Unit,
     closeDrawer: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxSize()) {
-        JetNewsLogo(Modifier.padding(16.dp))
+        Text(modifier = Modifier.padding(16.dp), text = "HazeSoft News", style = MaterialTheme.typography.h3)
         Divider(color = MaterialTheme.colors.onSurface.copy(alpha = .2f))
         DrawerButton(
             icon = Icons.Filled.Home,
             label = stringResource(id = R.string.home_title),
-            isSelected = currentRoute == Screen.NewsListScreen.route,
+            isSelected = currentScreen == "Home",
             action = {
                 navigateToHome()
                 closeDrawer()
@@ -43,24 +39,11 @@ fun AppDrawer(
         DrawerButton(
             icon = Icons.Filled.Favorite,
             label = stringResource(id = R.string.saved_title),
-            isSelected = currentRoute == Screen.SavedTitleScreen.route,
+            isSelected = currentScreen == "Saved",
             action = {
                 navigateToSaved()
                 closeDrawer()
             }
-        )
-    }
-}
-
-@Composable
-private fun JetNewsLogo(modifier: Modifier = Modifier) {
-    Row(modifier = modifier) {
-        JetnewsIcon()
-        Spacer(Modifier.width(8.dp))
-        Image(
-            painter = painterResource(R.drawable.ic_launcher_foreground),
-            contentDescription = stringResource(R.string.app_name),
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface)
         )
     }
 }

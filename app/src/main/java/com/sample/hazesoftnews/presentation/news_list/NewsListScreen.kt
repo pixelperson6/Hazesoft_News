@@ -3,7 +3,6 @@ package com.sample.hazesoftnews.presentation.news_list
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -19,21 +18,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.sample.hazesoftnews.common.Constants.PARAM_AUTHOR
-import com.sample.hazesoftnews.common.Constants.PARAM_CONTENT
-import com.sample.hazesoftnews.common.Constants.PARAM_DECS
-import com.sample.hazesoftnews.common.Constants.PARAM_IMAGE_URL
 import com.sample.hazesoftnews.common.Constants.PARAM_INDEX
-import com.sample.hazesoftnews.common.Constants.PARAM_PUBLISHED
-import com.sample.hazesoftnews.common.Constants.PARAM_SOURCE_ID
-import com.sample.hazesoftnews.common.Constants.PARAM_SOURCE_NAME
-import com.sample.hazesoftnews.common.Constants.PARAM_TITLE
-import com.sample.hazesoftnews.common.Constants.PARAM_URL
 import com.sample.hazesoftnews.presentation.MainActivity
 import com.sample.hazesoftnews.presentation.Screen
 import com.sample.hazesoftnews.presentation.news_list.components.NewsListItem
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 @Composable
 fun NewsListScreen(

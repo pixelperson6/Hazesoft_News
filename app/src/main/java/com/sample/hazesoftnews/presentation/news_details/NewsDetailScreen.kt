@@ -31,7 +31,11 @@ fun NewsDetailScreen(
 
                 ArticleDetailsItem(article = article!!, onReadAllClick = {
                     activity.openUrl(it)
-                })
+                },
+                    onSavedClick = {
+                        viewModel.saveTitle(it)
+                    }
+                )
 
             }
         }
