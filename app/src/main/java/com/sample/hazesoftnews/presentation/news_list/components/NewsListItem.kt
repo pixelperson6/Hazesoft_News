@@ -50,7 +50,7 @@ fun NewsListItem(
                     .aspectRatio(16f / 9f)
             )
             Column(Modifier.padding(8.dp)) {
-                Text(text = article.title, style = MaterialTheme.typography.h6)
+                Text(text = article.title?:"not available", style = MaterialTheme.typography.h6)
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(article.description ?: "", style = MaterialTheme.typography.body1, maxLines = 4, overflow = TextOverflow.Ellipsis)
             }

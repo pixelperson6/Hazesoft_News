@@ -84,8 +84,8 @@ fun NewsListScreen(
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
                         item {
                             NewsStatus(
-                                count = newsState.news.totalResults,
-                                status = newsState.news.status
+                                count = newsState.news.totalResults?:0,
+                                status = newsState.news.status?:"not available"
                             )
                         }
                         itemsIndexed(newsState.news.articles) { index, article ->

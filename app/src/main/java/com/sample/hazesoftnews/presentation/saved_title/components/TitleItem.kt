@@ -64,7 +64,7 @@ fun TitleItem(
         ) {
 
             Text(
-                text = title.title,
+                text = title.title?:"not available"?:"not available",
                 style = MaterialTheme.typography.h6,
                 color = MaterialTheme.colors.onSurface
             )

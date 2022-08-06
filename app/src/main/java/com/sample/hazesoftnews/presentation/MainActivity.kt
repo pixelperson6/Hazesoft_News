@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.sample.hazesoftnews.common.Constants.PARAM_INDEX
 import com.sample.hazesoftnews.domain.model.Articles
-import com.sample.hazesoftnews.presentation.news_details.NewsDetailScreen
+import com.sample.hazesoftnews.presentation.news_details.components.DetailScreen
 import com.sample.hazesoftnews.presentation.news_list.NewsListScreen
 import com.sample.hazesoftnews.presentation.saved_title.TitlesScreen
 import com.sample.hazesoftnews.presentation.ui.theme.HazesoftNewsTheme
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
     var articles: Articles? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent {
             HazesoftNewsTheme {
@@ -65,9 +67,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             ) {
 
-                                NewsDetailScreen(
-                                    navController = navController
-                                )
+                                DetailScreen(navController = navController)
 
 
                             }
